@@ -1,7 +1,9 @@
 // Подключение стилей
-import '../scss/app.scss';
+import "../scss/app.scss";
 
-// Инициализация приложения
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('App initialized');
-});
+// Подключаем библиотеки
+import './modules/modal.module';
+import './modules/now.module';
+import './modules/wow.module';
+
+console.log('hello')

@@ -1,0 +1,34 @@
+// container options
+.container {
+  max-width: 100%;
+  width: 100%;
+  padding: 0 0.625rem;
+  margin: 0 auto;
+
+  @media (min-width: 1200px) {
+    width: 96%;
+    padding: 0;
+  }
+
+  @media (min-width: 1500px) {
+    // max-width: 1440px;
+    max-width: 65rem;
+  }
+
+  &-wider {
+    margin: 0 auto;
+    padding: 0;
+
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      padding: 0 10px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 96%;
+    }
+
+    @media (min-width: 1500px) {
+      max-width: 1440px;
+    }
+  }
+}

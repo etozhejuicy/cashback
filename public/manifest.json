@@ -54,6 +54,7 @@
   ],
   "scope": "/",
   "start_url": "/?source=pwa",
+  "display_override": ["fullscreen", "minimal-ui"],
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"

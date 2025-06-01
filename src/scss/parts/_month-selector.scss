@@ -1,0 +1,17 @@
+.month-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    width: 100%;
+
+    & > * {
+        &:not(button) {
+            flex: 1;
+            margin: 0;
+            text-align: center;
+        }
+    }
+}
