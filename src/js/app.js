@@ -1,8 +1,8 @@
 // Подключение стилей
 import "../scss/app.scss";
 
-import * as htmlToImage from 'html-to-image';
-import { saveAs } from 'file-saver';
+// import * as htmlToImage from 'html-to-image';
+// import { saveAs } from 'file-saver';
 
 // Подключаем библиотеки
 import "./modules/modal.module";
@@ -436,46 +436,46 @@ document.getElementById('saveCategory')?.addEventListener("click", () => {
   modalContent.innerHTML = '';
 });
 
-document.getElementById('shareBtn').addEventListener('click', async () => {
-  const list = document.getElementById('categoriesList');
+// document.getElementById('shareBtn').addEventListener('click', async () => {
+//   const list = document.getElementById('categoriesList');
 
-  // Создаем временный контейнер для красивого скриншота
-  const tempContainer = document.createElement('div');
-  tempContainer.style.background = 'white';
-  tempContainer.style.padding = '20px';
-  tempContainer.style.borderRadius = '10px';
-  tempContainer.innerHTML = `
-    <h2 style="text-align: center; margin-bottom: 15px;">
-      Мой кешбек на (${state.currentMonth})
-    </h2>
-    ${list.innerHTML}
-  `;
-  document.body.appendChild(tempContainer);
+//   // Создаем временный контейнер для красивого скриншота
+//   const tempContainer = document.createElement('div');
+//   tempContainer.style.background = 'white';
+//   tempContainer.style.padding = '20px';
+//   tempContainer.style.borderRadius = '10px';
+//   tempContainer.innerHTML = `
+//     <h2 style="text-align: center; margin-bottom: 15px;">
+//       Мой кешбек на (${state.currentMonth})
+//     </h2>
+//     ${list.innerHTML}
+//   `;
+//   document.body.appendChild(tempContainer);
 
-  try {
-    // Генерируем изображение
-    const dataUrl = await htmlToImage.toPng(tempContainer);
+//   try {
+//     // Генерируем изображение
+//     const dataUrl = await htmlToImage.toPng(tempContainer);
 
-    // Вариант 1: Нативное меню шаринга (работает на мобилах)
-    if (navigator.share) {
-      const response = await fetch(dataUrl);
-      const blob = await response.blob();
-      const file = new File([blob], 'cashback-list.png', { type: 'image/png' });
+//     // Вариант 1: Нативное меню шаринга (работает на мобилах)
+//     if (navigator.share) {
+//       const response = await fetch(dataUrl);
+//       const blob = await response.blob();
+//       const file = new File([blob], 'cashback-list.png', { type: 'image/png' });
 
-      await navigator.share({
-        title: `Мой кешбек-лист (${state.currentMonth})`,
-        text: 'Смотри какие кешбек-категории я использую!',
-        files: [file]
-      });
-    }
-    // Вариант 2: Скачивание (для десктопа)
-    else {
-      saveAs(dataUrl, `cashback-list-${new Date().toISOString()}.png`);
-      alert('Скриншот сохранён! Теперь можете отправить его вручную.');
-    }
-  } catch (e) {
-    console.error('Ошибка шаринга:', e);
-  } finally {
-    tempContainer.remove();
-  }
-});
+//       await navigator.share({
+//         title: `Мой кешбек-лист (${state.currentMonth})`,
+//         text: 'Смотри какие кешбек-категории я использую!',
+//         files: [file]
+//       });
+//     }
+//     // Вариант 2: Скачивание (для десктопа)
+//     else {
+//       saveAs(dataUrl, `cashback-list-${new Date().toISOString()}.png`);
+//       alert('Скриншот сохранён! Теперь можете отправить его вручную.');
+//     }
+//   } catch (e) {
+//     console.error('Ошибка шаринга:', e);
+//   } finally {
+//     tempContainer.remove();
+//   }
+// });
