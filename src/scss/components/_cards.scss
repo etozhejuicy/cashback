@@ -5,13 +5,49 @@
   flex-direction: column;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: var(--light-grey);
-  color: var(--dark);
+  background-color: light-dark(#eceff7, #252752);
+  color: light-dark(#0b0c22, #eceff7);
   text-decoration: none;
   overflow: hidden;
   transition: 0.25s ease-in-out;
 
   &:hover {
     text-decoration: none;
+  }
+
+  &-bank {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 1.25rem;
+    color: light-dark(#0b0c22, #eceff7);
+    background-color: light-dark(#eceff7, #252752);
+    border: 0.0625rem solid;
+
+    & > .color {
+      display: block;
+      width: 0.875rem;
+      height: 0.875rem;
+      background: var(--purple);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    & > img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    &--actions {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      flex: 1 0 auto;
+      width: 100%;
+    }
   }
 }

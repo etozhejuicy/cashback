@@ -20,6 +20,9 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove('show');
   document.documentElement.classList.remove('modal-open');
+  setTimeout(() => {
+    document.querySelector('.modal-content').innerHTML = '';
+  }, 250);
 }
 
 closeButtons.forEach((closeButton) => {

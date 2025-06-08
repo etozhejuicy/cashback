@@ -7,7 +7,7 @@
     flex-direction: column;
     width: 100%;
     height: fit-content;
-    border-bottom: 0.0625rem solid var(--grey);
+    border-bottom: 0.0625rem solid light-dark(#0b0c22, #434c65);
 
     &-top {
         position: relative;

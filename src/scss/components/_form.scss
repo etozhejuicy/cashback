@@ -6,6 +6,7 @@ input[type='text'].input,
 textarea.input,
 input[type='text'],
 input[type='number'],
+input[type='color'],
 textarea {
   @include input;
 }
@@ -26,6 +27,11 @@ textarea {
   resize: vertical;
 }
 
+select,
+.select {
+@include input;
+}
+
 .form {
   &-group {
     position: relative;
@@ -41,6 +47,56 @@ textarea {
         border-radius: 4px;
         font-size: 12px;
         color: #ffffff;
+      }
+    }
+  }
+
+  &-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    width: 100%;
+
+    & > * {
+      flex: 1;
+      width: 100%;
+    }
+
+    & > span {
+      flex: 0;
+    }
+  }
+
+  &-creating {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &--inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      & > * {
+        width: 100%;
+        flex: 1;
+      }
+    }
+
+    &--row {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    &--agree {
+      & label {
+        color: rgba(255, 255, 255, 0.6);
+
+        & a {
+          opacity: 0.6;
+        }
       }
     }
   }

@@ -40,7 +40,7 @@
           <i class="fa-solid fa-plus"></i>
           Категория
         </button>
-        <button class="btn btn-icon" id="shareBtn">
+        <button class="btn btn-icon ml-auto" id="shareBtn">
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
         </button>
       </div>
@@ -48,14 +48,17 @@
   </header>
 
   <main>
-    <section class="m-0 p-0">
+    <section class="m-0 pt-30 pb-0">
       <div class="container">
         <div class="card">
-          <div class="month-selector">
+          <div class="month-selector" data-month-selector="">
             <button id="prevMonth">
               <i class="fa-solid fa-arrow-left"></i>
             </button>
-            <span id="currentMonth">Июнь 2024</span>
+            <div class="month-selector--date">
+              <span class="select" id="currentMonth"></span>
+              <select type="date"></select>
+            </div>
             <button id="nextMonth">
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -67,10 +70,7 @@
     <section class="section-top mt-0">
       <div class="container">
         <h1>💰 Кошбек</h1>
-
-        <div class="card">
-          <div class="banks-list" id="banksList"></div>
-        </div>
+        <div class="banks-list" id="banksList"></div>
 
         <div class="categories-list" id="categoriesList"></div>
       </div>
@@ -79,7 +79,12 @@
 
   <!-- Модальные окна -->
   <div id="modal" class="modal">
-    <div class="modal-content"></div>
+    <button type="button" class="btn-close">
+      <i class="fa-solid fa-close"></i>
+    </button>
+    <div class="modal-dialog">
+      <div class="modal-content"></div>
+    </div>
   </div>
 
   <script type="module" src="./src/js/app.js"></script>

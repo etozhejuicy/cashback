@@ -63,12 +63,8 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    color: light-dark(var(--dark), var(--white));
-    background: light-dark(var(--light-gradient), var(--dark-gradient));
-    // color: #212121;
-    // background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
-	// background-size: 180% 180%;
-	// animation: gradient-animation 6s ease infinite;
+    color: light-dark(#0b0c22, #ffffff);
+    background: light-dark(#ffffff, #0b0c22);
     background-position: top center;
     background-attachment: fixed;
     background-repeat: repeat;
@@ -87,4 +83,13 @@ main {
 
 .wow {
     visibility: hidden;
+}
+
+.banks {
+    &-list {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
 }
