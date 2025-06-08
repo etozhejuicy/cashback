@@ -3,7 +3,7 @@ const ASSETS = [
   '/',
   '/index.html',
   '/style.css',
-  '/main.js',
+  '/src/app.js',
   '/assets/banks/tinkoff.svg',
   '/assets/banks/sber.svg'
 ];
