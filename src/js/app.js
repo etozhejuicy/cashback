@@ -9,6 +9,9 @@ import "./modules/modal.module";
 import "./modules/now.module";
 import "./modules/wow.module";
 
+// Подключаем компоненты
+import "./components/details";
+
 const addCategoryBtn = document.getElementById("addCategoryBtn");
 const addBankBtn = document.getElementById("addBankBtn");
 const saveCategoryBtn = document.getElementById("saveCategory");
@@ -53,15 +56,27 @@ class Banks {
 
   renderBanks() {
     const list = document.getElementById('banksList');
+
     list.innerHTML = state.banks.map(bank => `
       <div class="card card-bank" data-id="${bank.id}" ${bank.color ? `style="border-color: ${bank.color};"` : ""}>
         <div class="color" style="background: ${bank.color};"></div>
         <img src="/assets/banks/${bank.icon}" alt="${bank.name}" class="bank-icon" />
         ${bank.name}
-        <div class="card-bank--actions">
-          <button class="edit-bank-btn" data-id="${bank.id}">✏️</button>
-          <button class="delete-bank-btn" data-id="${bank.id}">🗑️</button>
-        </div>
+        <details class="dropdown-menu">
+          <summary class="btn dropdown-btn">
+            <i class="fa-solid fa-ellipsis"></i>
+          </summary>
+          <div class="dropdown-content">
+            <div class="card-bank--actions">
+              <button class="edit-bank-btn" data-id="${bank.id}">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+              <button class="delete-bank-btn" data-id="${bank.id}">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </details>
       </div>
     `).join('');
 
@@ -83,7 +98,7 @@ class Banks {
 
   editBank(id) {
     const bank = state.banks.find(b => b.id === id);
-    
+
     modalContent.innerHTML = `
       <h2 class="text-center">Редактировать банк</h2>
       <div class="form">
@@ -107,13 +122,13 @@ class Banks {
         </div>
       </div>
     `;
-    
+
     modal.classList.add('show');
 
     // Реализуем превью цвета
     const colorInput = document.getElementById('editBankColor');
     const colorPreview = document.querySelector('.color-preview');
-    
+
     colorInput.addEventListener('input', () => {
       colorPreview.style.background = colorInput.value;
     });
@@ -122,12 +137,12 @@ class Banks {
     document.getElementById('saveBankChanges').addEventListener('click', () => {
       bank.name = document.getElementById('editBankName').value.trim();
       bank.color = colorInput.value;
-      
+
       if (!bank.name) {
         alert('Название банка не может быть пустым!');
         return;
       }
-      
+
       new appState().saveState();
       this.renderBanks();
       modal.classList.remove('show');
@@ -252,22 +267,20 @@ class Categories {
       <h2 class="text-center">Редактировать категорию</h2>
       <div class="form">
         <input type="text" id="editCategoryName" value="${category.name}" />
-        <input type="text" id="editCategoryDiscount" value="${
-          category.discount
-        }" />
+        <input type="text" id="editCategoryDiscount" value="${category.discount
+      }" />
         <input type="color" id="editCategoryColor" value="${category.color}" />
         <select id="editCategoryBank">
           ${state.banks
-            .map(
-              (b) => `
-            <option value="${b.id}" ${
-                b.id === category.bankId ? "selected" : ""
-              }>
+        .map(
+          (b) => `
+            <option value="${b.id}" ${b.id === category.bankId ? "selected" : ""
+            }>
               ${b.name}
             </option>
           `
-            )
-            .join("")}
+        )
+        .join("")}
         </select>
         <div class="form-actions">
           <button id="saveEditBtn">Сохранить</button>
@@ -402,8 +415,8 @@ addCategoryBtn?.addEventListener("click", () => {
         <input type="color" id="categoryColor" value="#33FF57" />
         <select id="categoryBank">
           ${state.banks
-            .map((bank) => `<option value="${bank.id}">${bank.name}</option>`)
-            .join("")}
+      .map((bank) => `<option value="${bank.id}">${bank.name}</option>`)
+      .join("")}
         </select>
       </div>
       <button id="saveCategory">Сохранить</button>
@@ -425,7 +438,7 @@ document.getElementById('saveCategory')?.addEventListener("click", () => {
 
 document.getElementById('shareBtn').addEventListener('click', async () => {
   const list = document.getElementById('categoriesList');
-  
+
   // Создаем временный контейнер для красивого скриншота
   const tempContainer = document.createElement('div');
   tempContainer.style.background = 'white';
@@ -433,7 +446,7 @@ document.getElementById('shareBtn').addEventListener('click', async () => {
   tempContainer.style.borderRadius = '10px';
   tempContainer.innerHTML = `
     <h2 style="text-align: center; margin-bottom: 15px;">
-      Мой кешбек-лист (${state.currentMonth})
+      Мой кешбек на (${state.currentMonth})
     </h2>
     ${list.innerHTML}
   `;
@@ -442,19 +455,19 @@ document.getElementById('shareBtn').addEventListener('click', async () => {
   try {
     // Генерируем изображение
     const dataUrl = await htmlToImage.toPng(tempContainer);
-    
+
     // Вариант 1: Нативное меню шаринга (работает на мобилах)
     if (navigator.share) {
       const response = await fetch(dataUrl);
       const blob = await response.blob();
       const file = new File([blob], 'cashback-list.png', { type: 'image/png' });
-      
+
       await navigator.share({
         title: `Мой кешбек-лист (${state.currentMonth})`,
         text: 'Смотри какие кешбек-категории я использую!',
         files: [file]
       });
-    } 
+    }
     // Вариант 2: Скачивание (для десктопа)
     else {
       saveAs(dataUrl, `cashback-list-${new Date().toISOString()}.png`);

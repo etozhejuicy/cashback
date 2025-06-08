@@ -16,6 +16,7 @@
   }
 
   &-bank {
+    z-index: unset;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
@@ -24,8 +25,9 @@
     color: light-dark(#0b0c22, #eceff7);
     background-color: light-dark(#eceff7, #252752);
     border: 0.0625rem solid;
+    overflow: visible;
 
-    & > .color {
+    &>.color {
       display: block;
       width: 0.875rem;
       height: 0.875rem;
@@ -34,11 +36,23 @@
       overflow: hidden;
     }
 
-    & > img {
+    &>img {
       width: 32px;
       height: 32px;
       object-fit: contain;
       object-position: center;
+    }
+
+    & .dropdown {
+      &-menu {
+        margin-left: auto;
+      }
+
+      &-content {
+        min-width: max-content;
+        left: unset;
+        right: 0;
+      }
     }
 
     &--actions {

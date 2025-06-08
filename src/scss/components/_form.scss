@@ -22,6 +22,10 @@ input[type='number'] {
   }
 }
 
+input[type="color"] {
+  @include color-picker;
+}
+
 textarea {
   min-height: 3.85em;
   resize: vertical;
@@ -29,7 +33,7 @@ textarea {
 
 select,
 .select {
-@include input;
+  @include input;
 }
 
 .form {
@@ -59,12 +63,12 @@ select,
     gap: 1rem;
     width: 100%;
 
-    & > * {
+    &>* {
       flex: 1;
       width: 100%;
     }
 
-    & > span {
+    &>span {
       flex: 0;
     }
   }
@@ -79,7 +83,7 @@ select,
       flex-direction: column;
       gap: 16px;
 
-      & > * {
+      &>* {
         width: 100%;
         flex: 1;
       }

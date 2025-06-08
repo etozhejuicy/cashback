@@ -1,6 +1,6 @@
 :root {
   color-scheme: light dark;
-  --light: #a69ef7;
+  --light: #8d86dd;
   --purple: #4029b9;
   --dark: #0b0c22;
   --grey: #83848f;
@@ -8,13 +8,11 @@
   --text-muted: #6a6a6a;
   --dark-grey: #383838;
   --white: #ffffff;
-  --gradient: linear-gradient(
-    263.35deg,
-    rgba(64, 41, 185, 0.6) 5.18%,
-    rgba(104, 195, 240, 0.6) 55.49%,
-    rgba(109, 183, 254, 0.6) 79.2%,
-    rgba(180, 152, 246, 0.6) 98.56%
-  );
+  --gradient: linear-gradient(263.35deg,
+      rgba(64, 41, 185, 0.6) 5.18%,
+      rgba(104, 195, 240, 0.6) 55.49%,
+      rgba(109, 183, 254, 0.6) 79.2%,
+      rgba(180, 152, 246, 0.6) 98.56%);
   --error: #ff9187;
   --red: #ff1500;
   --light-gradient: linear-gradient(91.2deg, #ffffff 1.03%, #4029b9 148.98%);
@@ -31,6 +29,7 @@
   &-0 {
     padding: 0 !important;
   }
+
   &t {
     &-0 {
       padding-top: 0 !important;
@@ -45,6 +44,7 @@
     &-0 {
       padding-bottom: 0 !important;
     }
+
     &-30 {
       padding-bottom: 30px !important;
     }
@@ -84,6 +84,7 @@
   &-0 {
     margin: 0 !important;
   }
+
   &x {
     &-0 {
       margin-left: 0 !important;
@@ -420,14 +421,14 @@ a {
     flex-wrap: nowrap;
     text-decoration: none;
 
-    & > i {
+    &>i {
       position: relative;
       top: 2px;
       display: flex;
     }
 
     &:hover {
-      & > span {
+      &>span {
         text-decoration: underline;
       }
     }
@@ -447,7 +448,7 @@ ol,
 ul {
   padding: 0 20px;
 
-  & > * {
+  &>* {
     padding: 2px;
 
     &:first-of-type {
